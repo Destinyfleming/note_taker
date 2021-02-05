@@ -50,22 +50,7 @@ app.post("/api/notes", function(req, res) {
 })
 
 //delete note function
-app.delete("/api/notes/:id", function(req, res) {
-    let noteID = req.params.id;
-    let newNoteID = 0;
-    console.log(`Note with: ${noteID} will now be deleted`);
-    storedNote = storedNote.filter(currNote => {
-        return currNote.id != noteID;
-    })
-    
-    for (currNote of storedNote) {
-        currNote.id = newNoteID.toString();
-        newNoteID++;
-    }
 
-    fs.writeFileSync(db, JSON.stringify(storedNote));
-    res.json(storedNote);
-})
 
 // Starts our server
 app.listen(PORT, () => {
